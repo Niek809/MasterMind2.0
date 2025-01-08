@@ -6,11 +6,13 @@ public class funtcieMaster {
 	String[] computerColors = { "Rood", "Blauw", "Groen", "Geel", "Paars", "Oranje" };
 	String[] code = new String[4];
 	Random rnd = new Random();
-	public static Scanner input = new Scanner(System.in);	
+	public static Scanner input = new Scanner(System.in);
 	int pegsInRightPosition = 0;
 	int pegsMisplaced = 0;
 	String[] userColors = new String[4];
 	int i = 0;
+	
+	
 	
 	public String[] randomcodemaker() {
 		for (int j = 0; j < code.length; j++) {
@@ -56,19 +58,21 @@ public class funtcieMaster {
 		}
 	}
 	
-	public void eind() {
-		if (pegsInRightPosition == 4) {
-			i = 11;
-		}
+	public boolean eind() {
+		return  pegsInRightPosition == 4;
+		
+		
 	}
 	
-	public void uitkomst() {
-		if (pegsInRightPosition == 4) {
-			System.out.println(" ");
-			System.out.println("Zo ik ben verbaast, goed gedaan!");
-		} else {
-			System.out.println(" ");
-			System.out.println("Dat is niet best, volgende keer beter.");
-		}
+	public void uitkomst(boolean gewonnen) {
+	    if (gewonnen) {
+	        System.out.println(" ");
+	        System.out.println("Zo ik ben verbaasd, goed gedaan!");
+	    } else {
+	        System.out.println(" ");
+	        System.out.println("Dat is niet best, volgende keer beter.");
+	    }
 	}
+
 }
+

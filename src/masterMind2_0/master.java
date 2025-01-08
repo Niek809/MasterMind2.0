@@ -24,7 +24,7 @@ public class master {
 	                System.out.println("Ongeldige keuze. Voer 1 of 2 in.");
 	                return;
 	        }
-
+	        
 	        System.out.println("Je hebt 10 pogingen om mijn code te raden. U moet 4 cijfers invoeren (kies uit Rood, Geel, Oranje, Paars, Groen, Blauw).");
 	        System.out.println("Zwart betekend dat u het juiste kleur op de goede plek heeft, Wit betekend dat het kleur correct is maar niet op de juiste plek, en - betekent dat het kleur er niet in zit.");
 
@@ -36,8 +36,12 @@ public class master {
 			
 			mm.input();
 			mm.checker();
-			mm.eind();
+			if (mm.eind()) {
+				break;
+			}
 		}
-		mm.uitkomst();
+		boolean gewonnen = mm.eind();
+		mm.uitkomst(gewonnen);
+
 	}
 }
