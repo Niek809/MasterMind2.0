@@ -3,75 +3,41 @@ package masterMind2_0;
 import java.util.*;
 
 public class master {
-	private static Scanner input = new Scanner(System.in);
+	private static Scanner input = new Scanner(System.in);	
 
 	public static void main(String[] args) {
+		funtcieMaster mm = new funtcieMaster();
 		int i;
+	        System.out.println("Welkom bij mastermind in java, ik hoop dat jullie het een leuk spel gaan vinden, succes met oplossen!");
+	        System.out.println("Wil je een (1) willekeurige code krijgen of (2) zelf een code bedenken?");
+	        int choice = input.nextInt();
+	        
+	        switch (choice) {
+	            case 1:
+	            	mm.randomcodemaker();
+	                break;
+	            case 2:
+	                System.out.println("Typ hier je 4-cijferige code (kies uit Rood, Geel, Oranje, Paars, Groen, Blauw):");
+	                mm.randomcodezelf();
+	                break;
+	            default:
+	                System.out.println("Ongeldige keuze. Voer 1 of 2 in.");
+	                return;
+	        }
 
-		String[] computerColors = { "Rood", "Blauw", "Groen", "Geel", "Paars", "Oranje" };
-		Random rnd = new Random();
+	        System.out.println("Je hebt 10 pogingen om mijn code te raden. U moet 4 cijfers invoeren (kies uit Rood, Geel, Oranje, Paars, Groen, Blauw).");
+	        System.out.println("Zwart betekend dat u het juiste kleur op de goede plek heeft, Wit betekend dat het kleur correct is maar niet op de juiste plek, en - betekent dat het kleur er niet in zit.");
 
-		
-		
-		
-		String[] code = new String[4];
-		for (int j = 0; j < code.length; j++) {
-			code[j] = computerColors[rnd.nextInt(computerColors.length)];
-			System.out.println(code[j]);
-			}
-		
-		int pegsInRightPosition = 0;
-		int pegsMisplaced = 0;
-		String[] userColors = new String[4];
-		
-		System.out.println("Welkom bij mastermind in java, ik hoop dat jullie het een leuk spel gaan vinden, succes met oplossen!");
-		System.out.println("U heeft 10 pogingen om mijn code te raden, u moet 4 cijfer in typen om te spelen. (kies uit Rood, Geel, Oranje, Paars, Groen, Blauw)");
-		System.out.println("Zwart betekend dar u het kleuren op de goede plek heeft staan, Wit betekend dat de kleuren goed is maar hij staat niet op de goede plek, en - is dat dat kleuren er niet in zit.");
-		
 		for (i = 1; i <= 10; i++) {
 			
 			System.out.println(" ");
 			System.out.println("Typ hier je gok: ");
 			System.out.println("poging: " + i);
 			
-			pegsInRightPosition = 0;
-			pegsMisplaced = 0;
-			
-			for (int j = 0; j < 4; j++) {
-			userColors[j] = input.next();}
-			pegsInRightPosition = 0;
-			pegsMisplaced = 0;
-			
-			for (int j = 0; j < userColors.length; j++) {
-			    if (userColors[j].equals(code[j])) {
-			        System.out.print("zwart ");
-			        pegsInRightPosition++;
-			    } else {
-			        int x;
-			        for (x = 0; x < code.length; x++) {
-			            if (userColors[j].equals(code[x]) && j != x) {
-			                System.out.print("wit ");
-			                break;
-			            }
-			        }
-			        
-			        if (x == code.length) {
-			            System.out.print(" - ");
-			        }
-			    }
-			}
-			
-			if (pegsInRightPosition == 4) {
-				i = 11;
-			}
+			mm.input();
+			mm.checker();
+			mm.eind();
 		}
-		
-		if (pegsInRightPosition == 4) {
-			System.out.println(" ");
-			System.out.println("Zo ik ben verbaast, goed gedaan!");
-		} else {
-			System.out.println(" ");
-			System.out.println("Dat is niet best, volgende keer beter.");
-		}
+		mm.uitkomst();
 	}
 }
