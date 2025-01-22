@@ -3,17 +3,22 @@ package masterMind2_0;
 import java.util.*;
 
 public class master {
-	private static Scanner input = new Scanner(System.in);	
+	private static Scanner input = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		funtcieMaster mm = new funtcieMaster();
 		int i;
 	        System.out.println("Welkom bij mastermind in java, ik hoop dat jullie het een leuk spel gaan vinden, succes met oplossen!");
 	        System.out.println("Wil je een (1) willekeurige code krijgen of (2) zelf een code bedenken?");
-	        int choice = input.nextInt();
+	      
+	        int choice = 0;
+	        
+	        do {
+	        	try {
+	        	choice = input.nextInt();
 	        
 	        switch (choice) {
-	            case 1:
+	        	case 1:
 	            	mm.randomcodemaker();
 	                break;
 	            case 2:
@@ -22,8 +27,14 @@ public class master {
 	                break;
 	            default:
 	                System.out.println("Ongeldige keuze. Voer 1 of 2 in.");
-	                return;
+	        	}
 	        }
+	        	 catch (InputMismatchException ex) {
+	        		 System.out.println("Ongeldige keuze. Voer 1 of 2 in.");
+	        		 input.nextLine();
+	        }
+	      }  while (choice != 1 && choice != 2);
+	      
 	        
 	        System.out.println("Je hebt 10 pogingen om mijn code te raden. U moet 4 cijfers invoeren (kies uit Rood, Geel, Oranje, Paars, Groen, Blauw).");
 	        System.out.println("Zwart betekend dat u het juiste kleur op de goede plek heeft, Wit betekend dat het kleur correct is maar niet op de juiste plek, en - betekent dat het kleur er niet in zit.");
@@ -34,7 +45,7 @@ public class master {
 			System.out.println("Typ hier je gok: ");
 			System.out.println("poging: " + i);
 			
-			mm.input();
+			mm.input();	
 			mm.checker();
 			if (mm.eind()) {
 				break;

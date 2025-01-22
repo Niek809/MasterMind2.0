@@ -15,6 +15,7 @@ public class funtcieMaster {
 	
 	
 	public String[] randomcodemaker() {
+		
 		for (int j = 0; j < code.length; j++) {
             code[j] = computerColors[rnd.nextInt(computerColors.length)];
         }
@@ -75,4 +76,3 @@ public class funtcieMaster {
 	}
 
 }
-
